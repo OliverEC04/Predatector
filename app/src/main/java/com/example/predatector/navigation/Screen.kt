@@ -1,4 +1,6 @@
 package com.example.predatector.navigation
 
-class Screen {
+sealed class Screen(val route: String) {
+    object Map : Screen("map")
+    object Detail : Screen("screens/car2")
 }

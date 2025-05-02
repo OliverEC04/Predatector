@@ -1,6 +1,5 @@
 package com.example.firstandroidapp.components.drawer
 
-import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,7 +31,6 @@ import kotlinx.coroutines.launch
 fun DrawerMenu(menuItems: List<MenuItem>, content: @Composable () -> Unit) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed);
     val scope = rememberCoroutineScope();
-    val context = LocalContext.current;
 
     ModalNavigationDrawer(drawerState = drawerState, drawerContent = {
         ModalDrawerSheet(drawerContainerColor = Color.Gray) {
@@ -53,7 +51,7 @@ fun DrawerMenu(menuItems: List<MenuItem>, content: @Composable () -> Unit) {
                         DrawerMenuItem(text = menuItem.name,
                             icon = menuItem.icon,
                             selected = menuItem.selected,
-                            onClick = { context.startActivity(Intent(context, menuItem.activity)) })
+                            onClick = { navController.navigate(menuItem.route) }) // TODO: do the nav thing here
                     }
                 }
             }
