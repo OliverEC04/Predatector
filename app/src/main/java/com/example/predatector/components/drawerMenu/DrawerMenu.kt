@@ -22,7 +22,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.predatector.models.MenuItem
 import kotlinx.coroutines.launch
@@ -48,10 +47,12 @@ fun DrawerMenu(menuItems: List<MenuItem>, content: @Composable () -> Unit) {
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
                     items(menuItems) { menuItem ->
-                        DrawerMenuItem(text = menuItem.name,
+                        DrawerMenuItem(
+                            text = menuItem.name,
                             icon = menuItem.icon,
                             selected = menuItem.selected,
-                            onClick = { navController.navigate(menuItem.route) }) // TODO: do the nav thing here
+                            onClick = menuItem.onClick
+                        )
                     }
                 }
             }

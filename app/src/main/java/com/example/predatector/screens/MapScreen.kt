@@ -6,16 +6,18 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import com.example.firstandroidapp.components.drawer.DrawerMenu
 import com.example.predatector.models.MenuItem
+import com.example.predatector.navigation.Screen
 
 @Composable
-fun MapScreen(
+fun MapScreen(navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     val menuItems = listOf(
-        MenuItem("Home", Icons.Default.Home, "map", true),
-        MenuItem("Animals", Icons.Default.ShoppingCart, "car2")
+        MenuItem("Home", Icons.Default.Home, { navController.navigate(Screen.Map.route) }, true),
+        MenuItem("Animals", Icons.Default.ShoppingCart, { navController.navigate(Screen.Detail.route) })
     )
 
     DrawerMenu(menuItems) {

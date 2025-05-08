@@ -10,12 +10,12 @@ import com.example.predatector.screens.MapScreen
 
 @Composable
 fun AppNavHost(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = Screen.Map.route) {
+    NavHost(navController, startDestination = Screen.Map.route) {
         composable(Screen.Map.route) {
-            MapScreen()
+            MapScreen(navController)
         }
         composable(Screen.Detail.route) {
-            Car2()
+            Car2(navController)
         }
     }
 }
