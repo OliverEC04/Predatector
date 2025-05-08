@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.predatector.screens.MapScreen
+import com.example.predatector.screens.PredatorListScreen
 
 @Composable
 fun AppNavHost(navController: NavHostController) {
@@ -13,7 +14,7 @@ fun AppNavHost(navController: NavHostController) {
             MapScreen(navController)
         }
         composable(Screen.PredatorList.route) {
-            MapScreen(navController)
+            PredatorListScreen(navController)
         }
         composable(Screen.WatchList.route) {
             MapScreen(navController)
@@ -21,5 +22,6 @@ fun AppNavHost(navController: NavHostController) {
         composable(Screen.Details.route) {
             MapScreen(navController)
         }
+
     }
 }
