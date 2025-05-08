@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.play.services.maps)
     val nav_version = "2.8.9"
 
     implementation(libs.androidx.core.ktx)

@@ -1,5 +1,6 @@
 package com.example.predatector.screens
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
@@ -12,6 +13,8 @@ import androidx.navigation.NavHostController
 import com.example.firstandroidapp.components.drawer.DrawerMenu
 import com.example.predatector.models.MenuItem
 import com.example.predatector.navigation.Screen
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.LatLng
 
 @Composable
 fun MapScreen(
@@ -30,7 +33,20 @@ fun MapScreen(
             { navController.navigate(Screen.WatchList.route) })
     )
 
+    val singapore = LatLng(1.3521, 103.8198)
+    val secondPin = LatLng(1.355, 103.82)
+
+    val cameraPositionState = rememberCameraPositionState {
+        position = CameraPosition.fromLatLngZoom(singapore, 11f)
+    }
+
     DrawerMenu(menuItems) {
-        Text(text = "MapScreen", modifier = modifier)
+        GoogleMap(
+            Modifier.fillMaxSize(),
+            cameraPositionState
+        ) {
+            Marker(position = singapore, title = "Singapore", snippet = "Marker in Singapore")
+            Marker(position = secondPin, title = "Another Pin", snippet = "Second location")
+        }
     }
 }
